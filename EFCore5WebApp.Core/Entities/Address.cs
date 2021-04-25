@@ -1,6 +1,6 @@
 ﻿namespace EFCore5WebApp.Core.Entities
 {
-    class Address
+    public class Address
     {
         public int Id { get; set; }
         public string AddressLine1 { get; set; }
