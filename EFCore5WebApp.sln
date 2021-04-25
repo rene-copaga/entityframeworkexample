@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore5WebApp", "EFCore5WebApp.csproj", "{E96D316B-F096-47E4-A9B3-078207D82BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore5WebApp.Core", "EFCore5WebApp.Core\EFCore5WebApp.Core.csproj", "{B5E51619-D0AF-48A1-872A-8CBBB23DEC0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore5WebApp.Core", "EFCore5WebApp.Core\EFCore5WebApp.Core.csproj", "{B5E51619-D0AF-48A1-872A-8CBBB23DEC0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore5WebApp.Core.Tests", "EFCore5WebApp.Core.Tests\EFCore5WebApp.Core.Tests.csproj", "{30D6267D-4658-4F01-B463-E0A5347D5A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore5WebApp.Core.Tests", "EFCore5WebApp.Core.Tests\EFCore5WebApp.Core.Tests.csproj", "{30D6267D-4658-4F01-B463-E0A5347D5A7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore5WebApp.DAL", "EFCore5WebApp.DAL\EFCore5WebApp.DAL.csproj", "{2FA98831-7A3E-499E-B95E-61D8D35F54A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore5WebApp.DAL.Tests", "EFCore5WebApp.DAL.Tests\EFCore5WebApp.DAL.Tests.csproj", "{5BC333C8-AF20-4D3D-AF3E-D6C801AFC713}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{30D6267D-4658-4F01-B463-E0A5347D5A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D6267D-4658-4F01-B463-E0A5347D5A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D6267D-4658-4F01-B463-E0A5347D5A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA98831-7A3E-499E-B95E-61D8D35F54A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA98831-7A3E-499E-B95E-61D8D35F54A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA98831-7A3E-499E-B95E-61D8D35F54A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA98831-7A3E-499E-B95E-61D8D35F54A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC333C8-AF20-4D3D-AF3E-D6C801AFC713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC333C8-AF20-4D3D-AF3E-D6C801AFC713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC333C8-AF20-4D3D-AF3E-D6C801AFC713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC333C8-AF20-4D3D-AF3E-D6C801AFC713}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
