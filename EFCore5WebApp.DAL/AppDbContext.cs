@@ -127,6 +127,14 @@ namespace EFCore5WebApp.DAL
                 new LookUp() { Code = "USA", Description = "United States of America",
                 LookUpType = LookUpType.Country}
             });
+
+            modelBuilder.Entity<Person>().HasData(new List<Person>()
+            {
+                new Person(){ Id = 1, FirstName = "John", LastName = "Smith",
+                EmailAddress = "john@smith.com"},
+                new Person(){ Id = 2, FirstName = "Susan", LastName = "Jones",
+                EmailAddress = "john@smith.com" }
+            });
         }
     }
 }
