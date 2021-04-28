@@ -135,6 +135,19 @@ namespace EFCore5WebApp.DAL
                 new Person(){ Id = 2, FirstName = "Susan", LastName = "Jones",
                 EmailAddress = "john@smith.com" }
             });
+
+            modelBuilder.Entity<Address>().HasData(new List<Address>()
+            {
+                new Address() { Id = 1, AddressLine1 = "123 Test St", AddressLine2 = "",
+                City = "Beverly Hills", State = "CA", ZipCode = "90210", PersonId = 1,
+                Country = "USA"},
+                new Address() { Id = 2, AddressLine1 = "123 Michigan Ave",
+                AddressLine2 = "", City = "Chicago", State = "IL", ZipCode = "60612",
+                PersonId = 2, Country = "USA"},
+                new Address() { Id = 3, AddressLine1 = "100 1St St", AddressLine2 = "",
+                City = "Chicago", State = "IL", ZipCode = "60612", PersonId = 2,
+                Country = "USA"}
+            });
         }
     }
 }
