@@ -38,5 +38,12 @@ namespace EFCore5WebApp.DAL.Tests
             var minPersonAge = _context.Persons.Min(x => x.Age);
             Assert.AreEqual(20, minPersonAge);
         }
+
+        [Test]
+        public void MaxPersonAge()
+        {
+            var maxPersonAge = _context.Persons.Max(x => x.Age);
+            Assert.Greater(maxPersonAge, 20);
+        }
     }
 }
