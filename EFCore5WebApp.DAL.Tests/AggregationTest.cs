@@ -52,5 +52,12 @@ namespace EFCore5WebApp.DAL.Tests
             var average = _context.Persons.Average(x => x.Age);
             Assert.AreEqual(25, average);
         }
+
+        [Test]
+        public void SumPersonAge()
+        {
+            var sumAge = _context.Persons.Sum(x => x.Age);
+            Assert.AreEqual(50, sumAge);
+        }
     }
 }
