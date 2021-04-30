@@ -117,5 +117,27 @@ namespace EFCore5WebApp.DAL.Tests
             Assert.AreEqual(expectedIlMinAge, groupedAddresses.Single(x => x.State == "IL").MinAge);
             Assert.AreEqual(expectedCaMinAge, groupedAddresses.Single(x => x.State == "CA").MinAge);
         }
+
+        [Test]
+        public void MaxAgePerState()
+        {
+            var expectedIlMaxAge = 30;
+            var expectedCaMaxAge = 20;
+            var groupedAddresses = from a in _context.Addresses
+                                   select new
+                                   {
+                                       State = a.State,
+                                       Age = a.Person.
+                                   Age
+                                   } into stateAge
+                                   group stateAge by stateAge.State into g
+                                   select new
+                                   {
+                                       State = g.Key,
+                                       MaxAge = g.Max(a => a.Age)
+                                   };
+            Assert.AreEqual(expectedIlMaxAge, groupedAddresses.Single(x => x.State == "IL").MaxAge);
+            Assert.AreEqual(expectedCaMaxAge, groupedAddresses.Single(x => x.State == "CA").MaxAge);
+        }
     }
 }
