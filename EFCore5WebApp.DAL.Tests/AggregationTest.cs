@@ -45,5 +45,12 @@ namespace EFCore5WebApp.DAL.Tests
             var maxPersonAge = _context.Persons.Max(x => x.Age);
             Assert.Greater(maxPersonAge, 20);
         }
+
+        [Test]
+        public void AveragePersonAge()
+        {
+            var average = _context.Persons.Average(x => x.Age);
+            Assert.AreEqual(25, average);
+        }
     }
 }
