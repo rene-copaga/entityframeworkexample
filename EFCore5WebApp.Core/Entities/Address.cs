@@ -10,5 +10,6 @@
         public string Country { get; set; }
         public string ZipCode { get; set; }
         public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace EFCore5WebApp.DAL.Tests
             {
                 FirstName = "Clarke",
                 LastName = "Kent",
-                //CreatedOn = DateTime.Now,
+                CreatedOn = DateTime.Now,
                 EmailAddress = "clark@daileybugel.com",
                 Addresses = new List<Address>
                 {
