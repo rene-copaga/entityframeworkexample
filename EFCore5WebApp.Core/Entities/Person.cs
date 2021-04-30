@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,8 @@ namespace EFCore5WebApp.Core.Entities
         [Required]
         public string EmailAddress { get; set; }
         public List<Address> Addresses { get; set; } = new List<Address>();
+        public DateTime CreatedOn { get; set; }
+        public List<Person> Parents { get; set; } = new List<Person>();
+        public List<Person> Children { get; set; } = new List<Person>();
     }
 }

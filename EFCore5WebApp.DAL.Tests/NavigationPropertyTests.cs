@@ -1,30 +1,27 @@
 ﻿using EFCore5WebApp.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 namespace EFCore5WebApp.DAL.Tests
 {
     [TestFixture]
-    public class DeleteTests
+    public class NavigationPropertyTests
     {
         private AppDbContext _context;
 
+        private Person _person;
         [SetUp]
         public void SetUp()
         {
-            _context = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>()
+            _context = new AppDbContext(new DbContextOptionsBuilder
+            <AppDbContext>()
             .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EfCore5WebApp; Trusted_Connection = True; MultipleActiveResultSets = true")
                   .Options);
-            // add person record
-            var record = new Person()
+            _person = new Person()
             {
                 FirstName = "Clarke",
                 LastName = "Kent",
-                CreatedOn = DateTime.Now,
                 EmailAddress = "clark@daileybugel.com",
                 Addresses = new List<Address>
                 {
@@ -48,22 +45,28 @@ namespace EFCore5WebApp.DAL.Tests
                     }
                 }
             };
-            _context.Persons.Add(record);
+            _context.Persons.Add(_person);
             _context.SaveChanges();
         }
 
         [Test]
-        public void DeletePerson()
+        public void GetAddressesFromPerson()
         {
-            var existing = _context.Persons.Single(x => x.FirstName == "Clarke" && x.LastName == "Kent");
-            var personId = existing.Id;
-            _context.Persons.Remove(existing);
+            Assert.AreEqual(2, _person.Addresses.Count);
+        }
+
+        [Test]
+        public void GetPersonFromAddress()
+        {
+            var address = _person.Addresses.First();
+            Assert.IsNotNull(address.Person);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _context.Persons.Remove(_person);
             _context.SaveChanges();
-            var found = _context.Persons.SingleOrDefault(x => x.FirstName == "Clarke" && x.LastName == "Kent");
-            Assert.IsNull(found);
-            var addresses = _context.Addresses.Where(x => x.PersonId ==
-            personId);
-            Assert.AreEqual(0, addresses.Count());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EFCore5WebApp.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +23,7 @@ namespace EFCore5WebApp.DAL.Tests
             {
                 FirstName = "Clarke",
                 LastName = "Kent",
-                //CreatedOn = DateTime.Now,
+                CreatedOn = DateTime.Now,
                 EmailAddress = "clark@daileybugel.com",
                 Addresses = new List<Address>
                 {
