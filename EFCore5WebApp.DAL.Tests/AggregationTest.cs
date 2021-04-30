@@ -59,5 +59,24 @@ namespace EFCore5WebApp.DAL.Tests
             var sumAge = _context.Persons.Sum(x => x.Age);
             Assert.AreEqual(50, sumAge);
         }
+
+        [Test]
+        public void GroupAddressesByState()
+        {
+            var expectedILAddressesCount = _context.Addresses.Where(x => x.State == "IL").Count();
+            var expectedCAAddressesCount = _context.Addresses.Where(x => x.State == "CA").Count();
+            var groupedAddresses = (from a in _context.Addresses.ToList()
+                                    group a by a.State into g
+                                    select new
+                                    {
+                                        State = g.Key,
+                                        Addresses =
+                                    g.Select(x => x)
+                                    }).ToList();
+            Assert.AreEqual(expectedILAddressesCount, groupedAddresses.Single(x =>
+            x.State == "IL").Addresses.Count());
+            Assert.AreEqual(expectedCAAddressesCount, groupedAddresses.Single(x =>
+            x.State == "CA").Addresses.Count());
+        }
     }
 }
