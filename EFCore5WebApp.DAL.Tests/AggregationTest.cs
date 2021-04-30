@@ -78,5 +78,23 @@ namespace EFCore5WebApp.DAL.Tests
             Assert.AreEqual(expectedCAAddressesCount, groupedAddresses.Single(x =>
             x.State == "CA").Addresses.Count());
         }
+
+        [Test]
+        public void GroupAddressesByStateCount()
+        {
+            var expectedILAddressesCount = _context.Addresses.Where(x => x.State == "IL").Count();
+            var expectedCAAddressesCount = _context.Addresses.Where(x => x.State == "CA").Count();
+            var groupedAddresses = (from a in _context.Addresses
+                                    group a by a.State into g
+                                    select new
+                                    {
+                                        State = g.Key,
+                                        Count = g.Count()
+                                    }).ToList();
+            Assert.AreEqual(expectedILAddressesCount, groupedAddresses.Single(x =>
+            x.State == "IL").Count);
+            Assert.AreEqual(expectedCAAddressesCount, groupedAddresses.Single(x =>
+            x.State == "CA").Count);
+        }
     }
 }
