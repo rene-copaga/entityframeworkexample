@@ -162,5 +162,27 @@ namespace EFCore5WebApp.DAL.Tests
             Assert.AreEqual(expectedIlAge, groupedAddresses.Single(x => x.State == "IL").AverageAge);
             Assert.AreEqual(expectedCaAge, groupedAddresses.Single(x => x.State == "CA").AverageAge);
         }
+
+        [Test]
+        public void SumAgePerState()
+        {
+            var expectedIlAge = 60;
+            var expectedCaAge = 20;
+            var groupedAddresses = from a in _context.Addresses
+                                   select new
+                                   {
+                                       State = a.State,
+                                       Age = a.Person.
+                                   Age
+                                   } into stateAge
+                                   group stateAge by stateAge.State into g
+                                   select new
+                                   {
+                                       State = g.Key,
+                                       SumAge = g.Sum(a => a.Age)
+                                   };
+            Assert.AreEqual(expectedIlAge, groupedAddresses.Single(x => x.State == "IL").SumAge);
+            Assert.AreEqual(expectedCaAge, groupedAddresses.Single(x => x.State == "CA").SumAge);
+        }
     }
 }
