@@ -31,5 +31,12 @@ namespace EFCore5WebApp.DAL.Tests
             x.LastName == "Smith");
             Assert.AreEqual(1, personCount);
         }
+
+        [Test]
+        public void MinPersonAge()
+        {
+            var minPersonAge = _context.Persons.Min(x => x.Age);
+            Assert.AreEqual(20, minPersonAge);
+        }
     }
 }
